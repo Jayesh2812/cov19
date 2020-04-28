@@ -1,0 +1,80 @@
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="{% static 'states/input.js'%}"></script>
+  <script src="{% static 'states/charts.js'%}"></script>
+  {% comment %} <script src="{% static 'world/dark.js'%}"></script> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'states/states.css' %}" >
+  <link rel="stylesheet" href="{% static 'world/dark.css' %}" >
+  <title>Document</title>
+</head>
+
+<body id ="body">
+  <header>
+    <nav>
+        <a href="{% url 'world' %} ">Link for World's Data</a>
+        {% comment %} <span id="mode" ></span> {% endcomment %}
+    </nav>
+  </header>
+  <section >
+    <h1 id="title">India COVID-19 Data </h1>
+    <h5 id="subtitle">Last Updated : {{total.time|naturaltime}}</h5>
+    <div class="total">
+      <h1 title="Confirmed cases In India" class="t-info">Confirmed Cases: <span>{{total.confirmed}}</span></h1>
+      <h1 title="Active cases In India" class="t-info">Active Cases: <span>{{total.active}}</span></h1>
+      <h1 title="Recovered cases In India" class="t-info">Recovered Cases: <span>{{total.recovered}}</span></h1>
+      <h1 title="Deaths cases In India" class="t-info">Deceased Cases: <span>{{total.deaths}}</span></h1>
+    </div>
+    
+  </section>
+  <section>
+
+    <div class="map-wrapper">
+      <h5 class="title">India's statewise data </h5>
+      <div id="regions_div"></div>
+    </div>
+  </section>
+  <section>
+
+    <select name="" id="list">
+      <option> Select the state </option>
+      {% for state in states %}
+      <option value="">{{state}}</option>
+      {% endfor %}
+    </select>
+    <div class="states">
+      <h1 title="Confirmed Cases" class="s_info">Confirmed Cases:<span id="c">N/A</span></h1>
+      <h1 title="Active Cases" class="s_info">Active Cases:<span id="a">N/A</span></h1>
+      <h1 title="Recovered Cases" class="s_info">Recovered Cases:<span id="r">N/A</span></h1>
+      <h1 title="Death Cases" class="s_info">Deaths Cases:<span id="d">N/A</span></h1>
+    </div>
+  </section>
+<section>
+
+  <div class="line-wrapper">
+    <h5 class="title">Time-Series of India</h5>
+    <h5 class="subtitle">From 30<sup>th</sup> January to Yesterday </h5>
+    <div class="legend">
+      <span>Confirmed</span>
+      <span>Recovered</span>
+      <span>Deceased/Deaths</span>
+    </div>
+    <div id="linechart_material"></div>
+  </div>
+</section>
+</body>
+
+</html>
+<script>
+  states = {{ states | safe }}
+  total = {{ total | safe }}
+  tl = {{ tl | safe }}
+  main = {{ main | safe }}
+</script>

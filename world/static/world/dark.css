@@ -1,0 +1,10 @@
+body.body {
+    background:rgb(41, 41, 41); 
+}
+.body a{
+   color:orange;
+   opacity:.8;
+}
+.body *:not(h1){
+    color:white;
+}

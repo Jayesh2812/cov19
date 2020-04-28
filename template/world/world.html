@@ -1,0 +1,106 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'world/world.css' %}">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src="{% static 'world/charts.js'%}"></script>
+  <script src="{% static 'world/input.js'%}"></script>
+    
+    <title>Document</title>
+
+</head>
+<body id="body">
+  <header>
+    <nav>
+        <a href="{% url 'states' %} ">Link for India's Data</a>
+        {% comment %} <span id="mode" ></span> {% endcomment %}
+    </nav>
+  </header>
+    <section>
+        <h1 id="title">World COVID-19 Data </h1>
+        <h5 id="subtitle">Last Updated : {{total.time|naturaltime}}</h5>
+        <div class="total">
+            <h1 class="t-info">Total Confirmed :  <span>{{total.confirmed|intcomma}}</span></h1>
+            <h1 class="t-info">Total Recovered :  <span>{{total.recovered|intcomma}}</span></h1>
+            <h1 class="t-info">Total Deceased :  <span>{{total.death|intcomma}}</span></h1>
+        </div>
+    </section>
+    <section>
+        <div class="select">
+
+            <select  id="option1">
+                <option value="">India</option>
+                {% for country in countries %}
+                <option value="{{forloop.counter0}}">{{country}}</option>
+                {% endfor %}
+            </select>
+            
+            <select  id="option2">
+                <option value="">US</option>
+                {% for country in countries %}
+                <option value="{{forloop.counter0}}">{{country|safe}}</option>
+                {% endfor %}
+            </select>
+            
+            <select  id="option3">
+                <option value="">China</option>
+                {% for country in countries %}
+                <option value="{{forloop.counter0}}">{{country|safe}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <form name="myForm">
+            <input type="radio" checked name="cov" id="confirmed" value="confirmed">
+            <label for="confirmed"> <span>Confirmed</span></label>
+            <input type="radio" name="cov" id="recovered" value="recovered">
+            <label for="recovered"> <span>Recovered</span></label>
+            <input type="radio" name="cov" id="death" value="deaths">
+            <label for="death"> <span>Death</span></label>
+        </form>
+        <input id="name"  type="submit" value="Plot">
+        <div class="line-wrapper">
+            <h5 id="demo" class="title">No. of COVID19 Cases Confirmed</h5>
+            <h5 id="dem" class="subtitle">In India , US , China</h5>
+                <div class="legend">
+                    <span id="c1">India</span>
+                    <span id="c2">US</span>
+                    <span id="c3">China</span>
+                  </div>
+                <div id="linechart_material"></div>
+            </div>
+    </section>
+
+    <section>
+        
+        <select id="main_option">
+            <option> India</option>
+            {% for country ,data in wd.items %}
+            <option value="{{forloop.counter0}}">{{country|safe}}</option>
+            {% endfor %}
+        </select>
+        <div class="nut-wrapper">
+            
+            <h5 id="nut-title" class="title">India's Total Cases {{wd.India.0}}</h5>
+            <div class="legend">
+                <span>Recovered</span>
+                <span>Deaths</span>
+                <span>Active</span>
+            </div>
+        </div>
+        <div id="donutchart"></div>
+    </section>
+
+</body>
+</html>
+<script>
+    dates = {{dates|safe}};  
+    countries={{countries|safe}};
+    data = {{data|safe}};
+    wd = {{wd|safe}};
+ 
+
+</script>
