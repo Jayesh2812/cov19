@@ -22,3 +22,9 @@ Visit the site [HERE](http://covidtracker.pythonanywhere.com/).
 
 ## Demo Images:
 ![India Map](https://github.com/Jayesh2812/cov19/blob/master/project%20demo/india.PNG "India Map")
+![Maharashtra Map](https://github.com/Jayesh2812/cov19/blob/master/project%20demo/maharashtra.PNG "Maharashtra Map")
+![Country Pie Map](https://github.com/Jayesh2812/cov19/blob/master/project%20demo/pie%20chart.PNG "Country Pie Map")
+![World Data](https://github.com/Jayesh2812/cov19/blob/master/project%20demo/world.PNG "World Data")
+
+## Demo Video:
+
