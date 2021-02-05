@@ -21,5 +21,4 @@ Visit the site [HERE](http://covidtracker.pythonanywhere.com/).
 + https://pomber.github.io/covid19/timeseries.json
 
 ## Demo Images:
-
-![alt text](/demo images/ "Logo Title Text 1")
+![India Map](https://github.com/Jayesh2812/cov19/blob/master/project%20demo/india.PNG "India Map")
