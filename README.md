@@ -11,4 +11,8 @@ Visit the site [here](http://covidtracker.pythonanywhere.com/)
 + Vanilla JavaScript
 
 
-
+## API's Used:
++ Google Charts API
++ https://api.covid19api.com/summary
++ https://api.covid19india.org/data.json
++ https://pomber.github.io/covid19/timeseries.json
